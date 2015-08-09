@@ -23,7 +23,7 @@ function domready(f) {
 }
 
 function start() {
-    log("starting app");
+    log("starting app, build version=%s", document.querySelector("html").dataset.buildVersion);
     require("./app").start();
 }
 

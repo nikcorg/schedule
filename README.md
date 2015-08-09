@@ -1,6 +1,6 @@
 # App builder boilerplate
 
-`npm run test` runs all in `src` which matches `*.spec.js`
+`npm run test` runs all in `src` which matches `*.spec.js` with `[tape](https://npmjs.com/package/tape)`.
 
 `npm run build` makes a build with `NODE_ENV=production`.
 

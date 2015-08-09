@@ -10,7 +10,7 @@ Files are built with a version suffix into `pub/`, e.g. `pub/bundle-1.0.0.js`.
 
 ## Bundled deps
 
-- [debug][https://npmjs.com/package/debug]
+- [debug](https://npmjs.com/package/debug)
 
 ## Tools used in build
 

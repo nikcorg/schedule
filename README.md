@@ -1,5 +1,11 @@
 # App builder boilerplate
 
+After rewriting this boilerplate build and watch scripts over and over again, I've finally compiled it into a cloneable repo.
+
+Original inspiration from [Task Automation with Npm Run](http://substack.net/task_automation_with_npm_run). Lots of improvements and further inspiration from [How to Use npm as a Build Tool](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
+
+## How to use
+
 `npm run test` runs all in `src` which matches `*.spec.js` with [tape](https://npmjs.com/package/tape).
 
 `npm run build` makes a build with `NODE_ENV=production`.

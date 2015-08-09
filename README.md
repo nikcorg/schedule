@@ -36,5 +36,5 @@ Files are built with a version suffix into `pub/`, e.g. `pub/bundle-1.0.0.js`.
 Only `__VERSION__` in the source is replace with version number from `package.json`.
 
 - find
-- send
+- sed
 

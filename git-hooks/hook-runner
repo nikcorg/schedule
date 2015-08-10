@@ -31,5 +31,7 @@ fi
 SIBLING_HOOKS=$(find ${GIT_DIR}/hooks -name "${HOOK_NAME}.*" -print)
 
 for HOOK in $SIBLING_HOOKS; do
-    $HOOK "$@" || exit $?
+    if [ -x $HOOK ]; then
+        $HOOK "$@" || exit $?
+    fi
 done

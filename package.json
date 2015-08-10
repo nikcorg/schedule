@@ -25,6 +25,8 @@
     "browserify": "^11.0.1",
     "cssnext": "^1.8.3",
     "envify": "^3.4.0",
+    "eslint": "^1.1.0",
+    "eslint-plugin-react": "^3.2.1",
     "nodemon": "^1.4.0",
     "parallelshell": "^2.0.0",
     "postcss": "^4.1.16",

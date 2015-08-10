@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "description": "App builder boilerplate",
   "scripts": {
+    "lint": "eslint src/js",
     "test": "tape src/**/*.spec.js",
     "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"${npm_package_version}-dev\" npm run watch:all",
     "build": "NODE_ENV=\"production\" BUILD_SUFFIX=\"${npm_package_version}\" npm run build:all",
-
     "watch:all": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "watch:js": "nodemon --watch src/js --exec \"npm run build:js\" -q",
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html\" -q",
-
     "build:all": "npm run build:html & npm run build:css & npm run build:js",
     "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all ] -t envify src/js/bootstrap.js > pub/bundle-${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${BUILD_SUFFIX}.css src/css/global.css",
-    "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;"
+    "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;",
+    "postinstall": "./git-hooks/hook-install post-commit && ./git-hooks/hook-install post-merge"
   },
   "author": "Niklas Lindgren <nikc@iki.fi>",
   "license": "MIT",
@@ -25,6 +25,8 @@
     "browserify": "^11.0.1",
     "cssnext": "^1.8.3",
     "envify": "^3.4.0",
+    "eslint": "^1.1.0",
+    "eslint-plugin-react": "^3.2.1",
     "nodemon": "^1.4.0",
     "parallelshell": "^2.0.0",
     "postcss": "^4.1.16",
@@ -33,5 +35,44 @@
   },
   "dependencies": {
     "debug": "^2.2.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "classes": true,
+      "blockBindings": true
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "eqeqeq": 1,
+      "new-cap": 1,
+      "no-console": 1,
+      "no-mixed-requires": [
+        1,
+        true
+      ],
+      "no-shadow": 1,
+      "no-unused-vars": 1,
+      "quotes": [
+        1,
+        "double"
+      ],
+      "semi": [
+        2,
+        "always"
+      ],
+      "yoda": [
+        1,
+        "always"
+      ]
+    }
   }
 }

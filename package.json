@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "App builder boilerplate",
   "scripts": {
+    "lint": "exit 0",
     "test": "tape src/**/*.spec.js",
     "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"${npm_package_version}-dev\" npm run watch:all",
     "build": "NODE_ENV=\"production\" BUILD_SUFFIX=\"${npm_package_version}\" npm run build:all",

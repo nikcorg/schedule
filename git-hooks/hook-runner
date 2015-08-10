@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+HOOK_NAME=$(basename $0)
+HOOK_SCRIPTS_DIR="$(dirname $GIT_DIR)/git-hooks"
+HOOK_SCRIPT="${HOOK_SCRIPTS_DIR}/${HOOK_NAME}"
+
+GIT_HOOKS_DIR="$(pwd)/${GIT_DIR}/hooks"
+
+ERR_HOOK_SCRIPTS_DIR_NOT_FOUND=1
+ERR_GIT_HOOK_NOT_FOUND=2
+
+err_exit()
+{
+    if [ "x$2" != "x" ]; then
+        echo "Error: $2" >&2
+    fi
+
+    exit $1
+}
+
+if [ ! -d "$HOOK_SCRIPTS_DIR" ]; then
+    err_exit $ERR_HOOK_SCRIPTS_DIR_NOT_FOUND "git-hooks dir not found: ${HOOK_SCRIPTS_DIR}"
+fi
+
+if [ ! -f "$HOOK_SCRIPT" ]; then
+    err_exit $ERR_GIT_HOOK_NOT_FOUND "hook script ${HOOK_NAME} not found"
+fi
+
+. $HOOK_SCRIPT
+
+SIBLING_HOOKS=$(ls ${GIT_DIR}/hooks/${HOOK_NAME}.*)
+
+for HOOK in $SIBLING_HOOKS; do
+    . $HOOK
+done

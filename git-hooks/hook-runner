@@ -28,7 +28,7 @@ fi
 
 . $HOOK_SCRIPT
 
-SIBLING_HOOKS=$(ls ${GIT_DIR}/hooks/${HOOK_NAME}.*)
+SIBLING_HOOKS=$(find ${GIT_DIR}/hooks -name "${HOOK_NAME}.*" -print)
 
 for HOOK in $SIBLING_HOOKS; do
     . $HOOK

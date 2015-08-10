@@ -15,7 +15,8 @@
     "build:all": "npm run build:html & npm run build:css & npm run build:js",
     "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all ] -t envify src/js/bootstrap.js > pub/bundle-${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${BUILD_SUFFIX}.css src/css/global.css",
-    "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;"
+    "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;",
+    "postinstall": "./git-hooks/hook-install post-commit && ./git-hooks/hook-install post-merge"
   },
   "author": "Niklas Lindgren <nikc@iki.fi>",
   "license": "MIT",

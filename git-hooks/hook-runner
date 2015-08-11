@@ -26,7 +26,7 @@ if [ ! -f "$HOOK_SCRIPT" ]; then
     err_exit $ERR_GIT_HOOK_NOT_FOUND "hook script ${HOOK_NAME} not found"
 fi
 
-. $HOOK_SCRIPT
+$HOOK_SCRIPT "$@" || exit $?
 
 SIBLING_HOOKS=$(find ${GIT_DIR}/hooks -name "${HOOK_NAME}.*" -print)
 

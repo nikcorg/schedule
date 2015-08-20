@@ -10,8 +10,11 @@ npm run lint && npm run test
 STATUS=$?
 
 if [ 0 -ne $STATUS ]; then
-    echo "Lint/tests exited with a non-zero status: $STATUS" >&2
-    echo "Fix errors and commit again" >&2
+    echo "Lint/tests exited with a non-zero status: $STATUS." >&2
+    echo "Fix the reported errors and commit again." >&2
+    echo "You can manually run tests using `npm run lint` and `npm test`."
+    echo "If the errors are in unmanaged files, stash them during the merge."
+    echo
     echo "This hook can be skipped using --no-verify" >&2
 
     exit $STATUS

@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 
-HOOK_NAME=$(basename $0)
-HOOK_SCRIPTS_DIR="$(dirname $GIT_DIR)/git-hooks"
-HOOK_SCRIPT="${HOOK_SCRIPTS_DIR}/${HOOK_NAME}"
-
-GIT_HOOKS_DIR="$(pwd)/${GIT_DIR}/hooks"
-
 ERR_HOOK_SCRIPTS_DIR_NOT_FOUND=1
-ERR_GIT_HOOK_NOT_FOUND=2
+ERR_GIT_DIR_NOT_FOUND=2
+ERR_GIT_HOOK_NOT_FOUND=3
 
 err_exit()
 {
@@ -24,6 +19,20 @@ err_exit()
 
     exit $EXIT_CODE
 }
+
+if [ -z $GIT_DIR ]; then
+    GIT_DIR=$(pwd)/.git
+fi
+
+if [ ! -d $GIT_DIR ]; then
+    err_exit $ERR_GIT_DIR_NOT_FOUND "Git dir not found: ${GIT_DIR}"
+fi
+
+HOOK_NAME=$(basename $0)
+HOOK_SCRIPTS_DIR="$(dirname $GIT_DIR)/git-hooks"
+HOOK_SCRIPT="${HOOK_SCRIPTS_DIR}/${HOOK_NAME}"
+
+GIT_HOOKS_DIR="$(pwd)/${GIT_DIR}/hooks"
 
 if [ ! -d "$HOOK_SCRIPTS_DIR" ]; then
     err_exit $ERR_HOOK_SCRIPTS_DIR_NOT_FOUND "git-hooks dir not found: ${HOOK_SCRIPTS_DIR}"

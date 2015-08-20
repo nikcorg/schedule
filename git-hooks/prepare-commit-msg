@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 
 # Skip hook on non-merge commits
-if [ "xmerge" != "x$2" ]; then
+if [ "xmerge" != "x$2" -a "xmerge" != "x$3" ]; then
     exit 0
 fi
 
 npm run lint && npm run test
-
 STATUS=$?
 
 if [ 0 -ne $STATUS ]; then
-    echo "Lint/tests exited with a non-zero status: $STATUS." >&2
-    echo "Fix the reported errors and commit again." >&2
-    echo "You can manually run tests using `npm run lint` and `npm test`."
-    echo "If the errors are in unmanaged files, stash them during the merge."
     echo
-    echo "This hook can be skipped using --no-verify" >&2
-
+    echo
+    echo "Lint/tests exited with a non-zero status: ${STATUS}"
+    echo "Fix the reported errors and commit again."
+    echo "You can manually run tests using 'npm run lint' and 'npm test'."
+    echo "If the errors are in unmanaged files or are uncommitted changes, stash them during the merge."
+    echo
+    echo
+    echo "This hook can be skipped using --no-verify"
     exit $STATUS
 fi
 

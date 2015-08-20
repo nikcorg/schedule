@@ -11,11 +11,18 @@ ERR_GIT_HOOK_NOT_FOUND=2
 
 err_exit()
 {
-    if [ "x$2" != "x" ]; then
-        echo "Error: $2" >&2
+    local MSG="$2"
+    local EXIT_CODE="$1"
+
+    if [ "x$MSG" != "x" ]; then
+        if [ "0" != "${EXIT_CODE}" ]; then
+            MSG="Error: ${MSG}"
+        fi
+
+        echo "$(basename $0): $MSG" >&2
     fi
 
-    exit $1
+    exit $EXIT_CODE
 }
 
 if [ ! -d "$HOOK_SCRIPTS_DIR" ]; then
@@ -26,7 +33,7 @@ if [ ! -f "$HOOK_SCRIPT" ]; then
     err_exit $ERR_GIT_HOOK_NOT_FOUND "hook script ${HOOK_NAME} not found"
 fi
 
-. $HOOK_SCRIPT
+$HOOK_SCRIPT "$@" || exit $?
 
 SIBLING_HOOKS=$(find ${GIT_DIR}/hooks -name "${HOOK_NAME}.*" -print)
 

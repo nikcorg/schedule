@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+while [ 1 -lt ${#@} ]; do
+    $0 "$1"
+    shift
+done
+
+if [ 0 -eq ${#@} ]; then
+    echo "Usage: $(basename $0) <hook 1> [<hook 2> [<hook 3> ...]]"
+    exit 0
+fi
+
 INSTALL_TARGET="$1"
 
 ERR_MISSING_INSTALL_TARGET=1

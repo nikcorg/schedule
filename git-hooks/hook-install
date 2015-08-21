@@ -77,4 +77,12 @@ if [ -f "${HOOKDEST}" -o -L "${HOOKDEST}" ]; then
 fi
 
 do_install "$HOOKRUNNER" "$HOOKDEST"
-echo "Installed ${INSTALL_TARGET}"
+
+if [ 0 -ne $? ]; then
+    echo "Hooking failed for ${INSTALL_TARGET}"
+    exit $?
+fi
+
+echo "Hooked onto ${INSTALL_TARGET}"
+
+exit 0

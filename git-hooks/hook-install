@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 while [ 1 -lt ${#@} ]; do
-    $0 "$1"
+    $0 "$1" || exit $?
     shift
 done
 

@@ -2,6 +2,7 @@
 
 ERR_MISSING_INSTALL_TARGET=1
 ERR_GIT_DIR_NOT_FOUND=2
+ERR_UNINSTALL_FAILED=3
 ERR_RUNNER_MISSING=4
 ERR_TARGET_NOT_FOUND=5
 
@@ -56,7 +57,6 @@ fi
 
 for CANDIDATE in $CANDIDATES; do
     if [ -L "${CANDIDATE}" -a "$(readlink $CANDIDATE)" == "${HOOKRUNNER}" ]; then
-        rm "${CANDIDATE}"
-        echo "Uninstalled $(basename $CANDIDATE)"
+        rm "${CANDIDATE}" && echo "Unhooked $(basename $CANDIDATE)" || err_exit $ERR_UNINSTALL_FAILED "Unhooking failed for ${CANDIDATE}"
     fi
 done

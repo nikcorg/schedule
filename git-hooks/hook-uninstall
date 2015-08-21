@@ -3,6 +3,7 @@
 ERR_MISSING_INSTALL_TARGET=1
 ERR_GIT_DIR_NOT_FOUND=2
 ERR_RUNNER_MISSING=4
+ERR_TARGET_NOT_FOUND=5
 
 err_exit()
 {
@@ -40,12 +41,18 @@ fi
 
 FIND_NAME_MASK='*'
 UNINSTALL_TARGET="$1"
+EXPLICIT_TARGET=""
 
 if [ "x" != "x${UNINSTALL_TARGET}" -a "all" != "${UNINSTALL_TARGET}" ]; then
+    EXPLICIT_TARGET="yes"
     FIND_NAME_MASK="${UNINSTALL_TARGET}"
 fi
 
 CANDIDATES=$(find $HOOKDIR -type l -name "${FIND_NAME_MASK}")
+
+if [ "yes" = "$EXPLICIT_TARGET" -a -z "$CANDIDATES" ]; then
+    err_exit $ERR_TARGET_NOT_FOUND "Unhook failed, hook not found: ${UNINSTALL_TARGET}"
+fi
 
 for CANDIDATE in $CANDIDATES; do
     if [ -L "${CANDIDATE}" -a "$(readlink $CANDIDATE)" == "${HOOKRUNNER}" ]; then

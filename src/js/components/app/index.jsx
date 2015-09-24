@@ -40,7 +40,8 @@ export class App extends Component {
                     {this.getMainView(view)}
                 </main>
                 <footer className="footer">
-                    <a href={coc.link} onClick={(e) => this.onCocClicked(e)}><abbr title="Code of Conduct">CoC</abbr></a> |
+                    <a href={coc.link} onClick={(e) => this.onCocClicked(e)}><abbr title="Code of Conduct">CoC</abbr></a>
+                    {" | "}
                     <a href="/" onClick={(e) => this.onTLClicked(e)}>Track list</a>
                 </footer>
             </div>

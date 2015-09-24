@@ -8,11 +8,11 @@
     "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"-dev\" npm run watch:all",
     "build": "NODE_ENV=\"production\" npm run build:all",
     "watch:all": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
-    "watch:js": "nodemon --watch src/js --exec \"npm run build:js\" -q",
+    "watch:js": "nodemon --watch src/js -e js,jsx --exec \"npm run build:js\" -q",
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html\" -q",
     "build:all": "npm run build:html & npm run build:css & npm run build:js",
-    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all ] -t envify -t brfs src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX-$npm_package_version}.js",
+    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all --stage 0 ] -t envify -t brfs --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX-$npm_package_version}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${npm_package_version}${BUILD_SUFFIX}.css src/css/global.css",
     "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${npm_package_version}${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;",
     "postinstall": "./git-hooks/hook-uninstall all && ./git-hooks/hook-install pre-push && ./git-hooks/hook-install prepare-commit-msg"
@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "debug": "^2.2.0",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "react-redux": "^2.1.2",
+    "redux": "^3.0.0"
   }
 }

@@ -1,0 +1,14 @@
+:root {
+    --edge-padding: 8px;
+
+    --header-bg: #f00;
+    --header-fg: #0B0B0B;
+    --header-height: 70px;
+
+    --footer-bg: #ddd;
+    --footer-fg: #333;
+    --footer-height: 50px;
+
+    --main-bg: #eee;
+    --main-fg: #333;
+}

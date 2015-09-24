@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "debug": "^2.2.0",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "react-redux": "^2.1.2",
+    "redux": "^3.0.0"
   }
 }

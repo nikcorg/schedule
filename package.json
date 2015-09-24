@@ -12,7 +12,7 @@
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html\" -q",
     "build:all": "npm run build:html & npm run build:css & npm run build:js",
-    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all ] -t envify src/js/bootstrap.js > pub/bundle-${BUILD_SUFFIX}.js",
+    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all ] -t envify -t brfs src/js/bootstrap.js > pub/bundle-${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${BUILD_SUFFIX}.css src/css/global.css",
     "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;",
     "postinstall": "./git-hooks/hook-uninstall all && ./git-hooks/hook-install pre-push && ./git-hooks/hook-install prepare-commit-msg"
@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel": "^5.8.21",
     "babelify": "^6.1.3",
+    "brfs": "^1.4.1",
     "browserify": "^11.0.1",
     "cssnext": "^1.8.3",
     "envify": "^3.4.0",

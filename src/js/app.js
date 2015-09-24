@@ -1,5 +1,4 @@
 import debug from "debug";
-import moment from "moment";
 import data from "../../data/schedule";
 import React from "react";
 import { App } from "./components/app";

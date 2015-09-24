@@ -1,0 +1,542 @@
+{
+    "event": {
+        "name": "JSConf EU 2015",
+        "twitter": {
+            "hashtag": "#jsconfeu",
+            "user": "@jsconfeu"
+        },
+        "coc": {
+            "link": "http://2015.jsconf.eu/code-of-conduct/",
+            "contact": {
+                "name": "Tiffany Conroy",
+                "twitter": "@theophani",
+                "email": "tiffany@jsconf.eu",
+                "phone": "+4917632578373"
+            }
+        }
+    },
+    "tracks": {
+        "All": {
+            "2015-09-24": [{
+                "start": "21:00",
+                "title": "RejectJS after party, JSConf EU pre party"
+            }],
+            "2015-09-25": [{
+                "start": "8:30",
+                "duration": 60,
+                "title": "Breakfast"
+            }, {
+                "start": "11:00",
+                "duration": 15,
+                "title": "Coffee break"
+            }, {
+                "start": "12.45",
+                "duration": 60,
+                "title": "Lunch"
+            }, {
+                "start": "15.15",
+                "duration": 15,
+                "title": "Coffee break"
+            }, {
+                "start": "17:00",
+                "duration": 15,
+                "title": "Coffee break"
+            }, {
+                "start": "18.45",
+                "duration": 15,
+                "title": "Closing Day 1"
+            }, {
+                "start": "19.00",
+                "duration": 90,
+                "title": "Dinner by Innogames"
+            }, {
+                "start": "21.30",
+                "title": "Party Day 1 - by GOOGLE + SINNERSCHRADER",
+                "link": "http://2014.jsconf.eu/news/2014/09/01/saturday-night-party.html"
+            }],
+            "2015-09-27": [{
+                "start": "9:00",
+                "duration": 55,
+                "title": "Breakfast"
+            }, {
+                "start": "9:55",
+                "duration": 5,
+                "title": "Opening Day 2"
+            }, {
+                "start": "11:00",
+                "duration": 15,
+                "title": "Coffee Break"
+            }, {
+                "start": "13.15",
+                "duration": 60,
+                "title": "Lunch"
+            }, {
+                "start": "15:45",
+                "duration": 15,
+                "title": "Coffee Break"
+            }, {
+                "start": "17:00",
+                "duration": 15,
+                "title": "Coffee break"
+            }, {
+                "start": "18:15",
+                "duration": 15,
+                "title": "Closing Conference; Instructions for Party"
+            }, {
+                "start": "18:20",
+                "duration": 5,
+                "title": "Group Photo"
+
+            }, {
+                "start": "19:00",
+                "title": "Party Day 2 - by HOODIE, Soundcloud and &yet"
+            }],
+            "2015-09-27": [{
+                "start": "10:30",
+                "duration": 150,
+                "title": "relax.js - by BLOOMBERG"
+            }]
+        },
+        "Back Track": {
+            "2015-09-25": [{
+                "start": "9:27",
+                "duration": 30,
+                "presenter": {
+                    "name": "Curators"
+                },
+                "title": "Opening JSConf EU 2015"
+            }, {
+                "start": "10:00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Jennifer Wong",
+                    "twitter": "@mybluewristband"
+                },
+                "title": "Think I Know What You’re Talking About, But I’m Not Sure",
+                "link": "http://2015.jsconf.eu/speakers/jennifer-wong-i-think-i-know-what-youre-talking-about-but-im-not-sure.html"
+            }, {
+                "start": "10:30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Ryan Seddon",
+                    "twitter": "@ryanseddon"
+                },
+                "title": "So how does the browser actually render a website",
+                "link": "http://2015.jsconf.eu/speakers/ryan-seddon-so-how-does-the-browser-actually-render-a-website.html"
+            }, {
+                "start": "11.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Kai Jäger",
+                    "twitter": "@kaijaeger"
+                },
+                "title": "What it's like to live on the edge",
+                "link": "http://2015.jsconf.eu/speakers/kai-jaeger-what-it-s-like-to-live-on-the-edge.html"
+            }, {
+                "start": "11.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Sam Richard",
+                    "twitter": "@snugug"
+                },
+                "title": "Domo Arigato Mr. Roboto",
+                "link": "http://2015.jsconf.eu/speakers/sam-richard-domo-arigato-mr-roboto.html"
+            }, {
+                "start": "12.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Denys Mishunov",
+                    "twitter": "@mishunov"
+                },
+                "title": "Illusion of Time. When 60 seconds is not 1 minute",
+                "link": "http://2015.jsconf.eu/speakers/denys-mishunov-illusion-of-time-when-60-seconds-is-not-1-minute.html"
+            }, {
+                "start": "13.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Marijn Haverbeke",
+                    "twitter": "@marijnjh"
+                },
+                "title": "Salvaging contentEditable: Building a Robust WYSIWYM Editor",
+                "link": "http://2015.jsconf.eu/speakers/marijn-haverbeke-salvaging-contenteditable-building-a-robust-wysiwym-editor.html"
+            }, {
+                "start": "14.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Peter Müller",
+                    "twitter": "@_munter_"
+                },
+                "title": "Transpiling Recomposed",
+                "link": "http://2015.jsconf.eu/speakers/peter-mueller-transpiling-recomposed.html"
+            }, {
+                "start": "14.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Joa Ebert",
+                    "twitter": "@joa"
+                },
+                "title": "JVM/JS",
+                "link": "http://2015.jsconf.eu/speakers/joa-ebert-jvmjs.html"
+            }, {
+                "start": "15.30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Dmitry Baranovskiy",
+                    "twitter": "@DmitryBaranovsk"
+                },
+                "title": "Zen of JavaScript",
+                "link": "http://2015.jsconf.eu/speakers/dmitry-baranovskiy-zen-of-javascript.html"
+            }, {
+                "start": "16.00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Mathias Bynens",
+                    "twitter": "@mathias"
+                },
+                "title": "RegExp.prototype.unicode",
+                "link": "http://2015.jsconf.eu/speakers/mathias-bynens-regexpprototypeunicode.html"
+            }, {
+                "start": "16.30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Franziska Hinkelmann",
+                    "twitter": "@fhinkel"
+                },
+                "title": "A Trip to the Zoo: SpiderMonkey, SquirrelFish, Nashorn, and V8*",
+                "link": "http://2015.jsconf.eu/speakers/franziska-hinkelmann-a-trip-to-the-zoo-spidermonkey-squirrelfish-nashorn-and-v8.html"
+            }, {
+                "start": "17.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Surma Surma"
+                },
+                "title": "The Mobile Web is a Contender",
+                "link": "http://2015.jsconf.eu/speakers/surma-surma-the-mobile-web-is-a-contender.html"
+            }, {
+                "start": "17.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Thomas Gorissen",
+                    "twitter": "@serrynaimo"
+                },
+                "title": "The year of the peer-to-peer web",
+                "link": "http://2015.jsconf.eu/speakers/thomas-gorissen-the-year-of-the-peertopeer-web.html"
+            }, {
+                "start": "",
+                "duration": 30,
+                "presenter": {
+                    "name": "Cate Huston",
+                    "twitter": "@catehstn"
+                },
+                "title": "Some Things I’ve Learned About Color",
+                "link": "http://2015.jsconf.eu/speakers/cate-huston-some-things-ive-learned-about-color.html"
+            }],
+            "2015-09-27": [{
+                "start": "10:00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Alejandro Oviedo",
+                    "twitter": "@a0viedo"
+                },
+                "title": "A fifth of century",
+                "link": "http://2015.jsconf.eu/speakers/alejandro-oviedo-a-fifth-of-century.html"
+            }, {
+                "start": "10.30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Panos Astithas",
+                    "twitter": "@pastith"
+                },
+                "title": "Write once, debug everywhere, from Firefox",
+                "link": "http://2015.jsconf.eu/speakers/panos-astithas-write-once-debug-everywhere-from-firefox.html"
+            }, {
+                "start": "11:00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Pawel Szymczykowski",
+                    "twitter": "@makenai"
+                },
+                "title": "JavaScript in (Near) Space",
+                "link": "http://2015.jsconf.eu/speakers/pawel-szymczykowski-javascript-in-near-space.html"
+            }, {
+                "start": "11.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Suz Hinton",
+                    "twitter": "@noopkat"
+                },
+                "title": "Refactoring the dinosaur",
+                "link": "http://2015.jsconf.eu/speakers/suz-hinton-refactoring-the-dinosaur.html"
+            }, {
+                "start": "12.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Christoph Pojer"
+                },
+                "title": "Evolving Complex Systems Incrementally",
+                "link": "http://2015.jsconf.eu/speakers/2015-09-16-christoph-pojer-evolving-complex-systems-Incrementally.html"
+            }, {
+                "start": "12.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Thomas Watson",
+                    "twitter": "@wa7son"
+                },
+                "title": "AirPlay protocol hacking",
+                "link": "http://2015.jsconf.eu/speakers/thomas-watson-airplay-protocol-hacking.html"
+            }, {
+                "start": "14:15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Patricia Garcia",
+                    "twitter": "@patggs"
+                },
+                "title": "Good Tech for Hard Places: Fighting Ebola with Javascript Offline Apps",
+                "link": "http://2015.jsconf.eu/speakers/patricia-garcia-good-tech-for-hard-places-fighting-ebola-with-javascript-offline-apps.html"
+            }, {
+                "start": "14.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Razvan Caliman",
+                    "twitter": "@razvancaliman"
+                },
+                "title": "Disconnected Networking",
+                "link": "http://2015.jsconf.eu/speakers/razvan-caliman-disconnected-networking.html"
+            }, {
+                "start": "15:15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Stefanie Grewenig"
+                },
+                "title": "OnConnectionLost: The life of an offline web application",
+                "link": "http://2015.jsconf.eu/speakers/stefanie-grewenig-onconnectionlost-the-life-of-an-offline-web-application.html"
+            }, {
+                "start": "16:00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Tim Slatcher"
+                },
+                "title": "Interactive Visualisations at Scale",
+                "link": "http://2015.jsconf.eu/speakers/tim-slatcher-interactive-visualisations-at-scale.html"
+            }, {
+                "start": "16:30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Brenna O'Brien'",
+                    "twitter": "@brnnbrn"
+                },
+                "title": "JavaScript Community: The Good Parts",
+                "link": "http://2015.jsconf.eu/speakers/brenna-obrien-javascript-community-the-good-parts.html"
+            }, {
+                "start": "17:15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Lieke Boon",
+                    "twitter": "@Lieke2208"
+                },
+                "title": "Unconscious Bias: we're all guilty",
+                "link": "http://2015.jsconf.eu/speakers/lieke-boon-unconscious-bias-were-all-guilty.html"
+            }, {
+                "start": "17:45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Carina C. Zona",
+                    "twitter": "@cczona"
+                },
+                "title": "Consequences of an Insightful Algorithm",
+                "link": "http://2015.jsconf.eu/speakers/carina-c-zona-consequences-of-an-insightful-algorithm.html"
+            }]
+        },
+        "Side Track": {
+            "2015-09-25": [{
+                "start": "11.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Etiene da Cruz Dalcol",
+                    "twitter": "@etiene_d"
+                },
+                "title": "What I learned teaching programming to 150 beginners",
+                "link": "http://2015.jsconf.eu/speakers/etiene-da-cruz-dalcol-what-i-learned-teaching-programming-to-150-beginners.html"
+            }, {
+                "start": "11.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Stephan Bönnemann",
+                    "twitter": "@boennemann"
+                },
+                "title": "Dependency Hell Just Froze Over",
+                "link": "http://2015.jsconf.eu/speakers/stephan-boennemann-dependency-hell-just-froze-over.html"
+            }, {
+                "start": "11.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Nick Hehr",
+                    "twitter": "@hipsterbrown"
+                },
+                "title": "The Other Side of Empathy",
+                "link": "http://2015.jsconf.eu/speakers/nick-hehr-the-other-side-of-empathy.html"
+            }, {
+                "start": "13.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Sarah Meyer",
+                    "twitter": "@meyerini"
+                },
+                "title": "Life in the Wilderness: How to Pioneer Tech Culture",
+                "link": "http://2015.jsconf.eu/speakers/sarah-meyer-life-in-the-wilderness-how-to-pioneer-tech-culture.html"
+            }, {
+                "start": "14.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Olga Madejska",
+                    "twitter": "@olamad313"
+                },
+                "title": "Breaking Bad - Web Components in production, what worked for us",
+                "link": "http://2015.jsconf.eu/speakers/olga-madejska-breaking-bad-web-components-in-production-what-worked-for-us.html"
+            }, {
+                "start": "14.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Szymon Nowak",
+                    "twitter": "@szimek"
+                },
+                "title": "How to grow your own Babel fish",
+                "link": "http://2015.jsconf.eu/speakers/szymon-nowak-how-to-grow-your-own-babel-fish.html"
+            }, {
+                "start": "15.30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Stefanie Schirmer",
+                    "twitter": "@linse"
+                },
+                "title": "Functional programming and curry cooking in JS",
+                "link": "http://2015.jsconf.eu/speakers/stefanie-schirmer-functional-programming-and-curry-cooking-in-js.html"
+            }, {
+                "start": "16.00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Marija Selakovic"
+                },
+                "title": "Let’s make JavaScript programs faster",
+                "link": "http://2015.jsconf.eu/speakers/marija-selakovic-let-s-make-javascript-programs-faster.html"
+            }, {
+                "start": "16.30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Txus",
+                    "twitter": "@txustice"
+                },
+                "title": "The Power Of Small Abstractions",
+                "link": "http://2015.jsconf.eu/speakers/txus-the-power-of-small-abstractions.html"
+            }, {
+                "start": "17.15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Dennis Radin",
+                    "twitter": "@PixelsCommander"
+                },
+                "title": "Rendering HTML via WebGL",
+                "link": "http://2015.jsconf.eu/speakers/denis-radin-rendering-html-via-webgl.html"
+            }, {
+                "start": "17.45",
+                "duration": 30,
+                "presenter": {
+                    "name": "David Valdman",
+                    "twitter": "@dmvaldman"
+                },
+                "title": "Functional Layout - Updating the DOM at 60FPS",
+                "link": "http://2015.jsconf.eu/speakers/david-valdman-functional-layout-updating-the-dom-at-60fps.html"
+            }, {
+                "start": "21.00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Martin Schuhfuß",
+                    "twitter": "@usefulthink"
+                },
+                "title": "Let there be light!",
+                "link": "http://2015.jsconf.eu/speakers/martin-schuhfuss-let-there-be-light.html"
+            }],
+            "2015-09-27": [{
+                "start": "10:30",
+                "duration": 30,
+                "presenter": {
+                    "name": "Whitney Williams",
+                    "twitter": "@whitneyhacks"
+                },
+                "title": "If Walter Gropius was a JavaScripter",
+                "link": "http://2015.jsconf.eu/speakers/whitney-williams-if-walter-gropius-was-a-javascripter.html"
+            }, {
+                "start": "11:00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Bryan Hughes",
+                    "twitter": "@nebrius"
+                },
+                "title": "The Risks and Rewards of Getting Involved and How to Do It",
+                "link": "http://2015.jsconf.eu/speakers/bryan-hughes-the-risks-and-rewards-of-getting-involved-and-how-to-do-it.html"
+            }, {
+                "start": "11:45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Anand Vemuri",
+                    "twitter": "@brownhat57"
+                },
+                "title": "What Your Scanner Doesn’t Tell You CAN Hurt You",
+                "link": "http://2015.jsconf.eu/speakers/anand-vemuri-what-your-scanner-doesnt-tell-you-can-hurt-you.html"
+            }, {
+                "start": "12:15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Artur Janc"
+                },
+                "title": "Security in the world of JS frameworks",
+                "link": "http://2015.jsconf.eu/speakers/artur-janc-security-in-the-world-of-js-frameworks.html"
+            }, {
+                "start": "12:45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Curtis Lassam",
+                    "twitter": "@classam"
+                },
+                "title": "Horse Drawing Tycoon: The World's Best Horse Drawing Simulator",
+                "link": "http://2015.jsconf.eu/speakers/curtis-lassam-horse-drawing-tycoon-the-worlds-best-horse-drawing-simulator.html"
+            }, {
+                "start": "14:15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Todd Gardner",
+                    "twitter": "@toddhgardner"
+                },
+                "title": "JavaScript Forensics",
+                "link": "http://2015.jsconf.eu/speakers/todd-gardner-javascript-forensics.html"
+            }, {
+                "start": "14:45",
+                "duration": 30,
+                "presenter": {
+                    "name": "Lewis Cowper",
+                    "twitter": "@lewiscowper"
+                },
+                "title": "Forklift Driver to Developer in 9 Months",
+                "link": "http://2015.jsconf.eu/speakers/lewis-cowper-forklift-driver-to-developer-in-9-months.html"
+            }, {
+                "start": "15:15",
+                "duration": 30,
+                "presenter": {
+                    "name": "Ola Adedoyin",
+                    "twitter": "@pixelsdatalove"
+                },
+                "title": "Applying 3D Engineering Drawing Techniques To Web App Diagrams",
+                "link": "http://2015.jsconf.eu/speakers/ola-adedoyin-applying-3d-engineering-drawing-techniques.html"
+            }, {
+                "start": "16:00",
+                "duration": 30,
+                "presenter": {
+                    "name": "Gilmore Davidson",
+                    "twitter": "@iamnotyourbroom"
+                },
+                "title": "Time zone of your life",
+                "link": "http://2015.jsconf.eu/speakers/gilmore-davidson-time-zone-of-your-life.html"
+            }]
+        }
+    }
+}

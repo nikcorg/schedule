@@ -35,44 +35,5 @@
   },
   "dependencies": {
     "debug": "^2.2.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true,
-      "es6": true
-    },
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true,
-      "classes": true,
-      "blockBindings": true
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "eqeqeq": 1,
-      "new-cap": 1,
-      "no-console": 1,
-      "no-mixed-requires": [
-        1,
-        true
-      ],
-      "no-shadow": 1,
-      "no-unused-vars": 1,
-      "quotes": [
-        1,
-        "double"
-      ],
-      "semi": [
-        2,
-        "always"
-      ],
-      "yoda": [
-        1,
-        "always"
-      ]
-    }
   }
 }

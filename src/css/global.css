@@ -61,3 +61,15 @@ main {
 .footer__link:first-child:before {
     content: "";
 }
+
+.presenter {
+
+}
+
+.presenter__naem {
+    display: block;
+    font-weight: bold;
+}
+.presenter__twitter {
+    display: block;
+}

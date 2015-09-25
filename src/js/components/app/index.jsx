@@ -41,7 +41,7 @@ export class App extends Component {
 
         let footerLinks = links.map(l => {
             return (
-                <div className="footer__link">
+                <div className={"footer__link " + (view === l.view ? "footer__link--active" : "")}>
                     <a href="#" onClick={e => (e.preventDefault(), this.switchView(l.view))}>{l.title}</a>
                 </div>
             );

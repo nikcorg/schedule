@@ -5,6 +5,8 @@ import { App } from "./components/app";
 
 const log = debug("app:app");
 
+const OE_GUESSTIMATE = 180;
+
 const initialState = {
     main: {
         view: "next-up"
@@ -31,7 +33,7 @@ function updateState(branch, patch) {
         currentState = { ...currentState, [branch]: { ...currentState[branch], ...patch } };
     }
 
-    return getState();
+    return true;
 }
 
 function renderMain(props) {
@@ -41,36 +43,110 @@ function renderMain(props) {
     );
 }
 
+function normaliseSessionData(conference) {
+    let days = Object.keys(conference.days).map((d, did) => {
+        return { id: did, date: new Date(d), tracks: data.days[d].tracks };
+    }).
+    map(day => {
+        return {
+            ...day,
+            tracks: Object.keys(day.tracks).map(t => ({ name: t, day: day.id, sessions: day.tracks[t] }))
+        };
+    });
+
+    let tracks = days.map(d => d.tracks).
+    reduce((a, ts) => a.concat(ts), []).
+    map((t, tid) => ({ id: tid, ...t }));
+
+    let sessions = tracks.map(track => {
+        return track.sessions.map(s => ({ ...s, track: track.id, start: new Date(days[track.day].date).setHours(...s.start.split(":")) }));
+    }).
+    reduce((a, ts) => a.concat(ts), []).
+    map((s, sid) => ({ id: sid, ...s }));
+
+    // Drop sessions from tracks
+    tracks = tracks.map(t => {
+        let { sessions, ...rest } = t;
+        return rest;
+    });
+
+    // Drop tracks from days
+    days = days.map(d => {
+        let { tracks, ...rest } = d;
+        return rest;
+    });
+
+    return { ...conference, sessions, tracks, days };
+}
+
+function updateUpcomingSessions(state) {
+    const { sessions, time: { now } } = state;
+
+    let upcoming = sessions.filter(s => now <= s.start).sort((a, b) => a.start - b.start).map(s => s.id);
+
+    return updateState("upcoming", { sessions: upcoming });
+}
+
+function updateCurrentSessions(state) {
+    const { sessions, time: { now } } = state;
+
+    let current = sessions.filter(s => {
+        let duration = (s.hasOwnProperty("duration") ? s.duration : OE_GUESSTIMATE) * 60 * 1000;
+        let sessionEnd = Number(s.start) + duration;
+        return now >= s.start && Number(now) <= sessionEnd;
+    }).
+    sort((a, b) => a.start - b.start).
+    map(s => s.id);
+
+    return updateState("current", { sessions: current });
+}
+
+function updateTimer(state) {
+    let { time } = state;
+    let now = new Date();
+
+    if (now !== time.now) {
+        return updateState("time", { now: new Date() });
+    }
+
+    return false;
+}
+
 export function start() {
     // Wrapped update so state updates re-render the app
     let wrappedUpdate = (...update) => {
-        updateState(...update);
+        if (updateState(...update)) {
+            renderApp();
+        }
+    };
+
+    let renderApp = () => {
         renderMain({ getState, updateState: wrappedUpdate });
     };
 
-    // Really ugly hack to include the date in the session start time
-    Object.keys(data.days).forEach(d => {
-        Object.keys(data.days[d].tracks).forEach(t => {
-            data.days[d].tracks[t].forEach(s => {
-                s.start = new Date(d + " " + s.start);
-            });
-        });
-    });
+    let tick = () => {
+        let updates = [
+            updateTimer(getState()),
+            updateUpcomingSessions(getState()),
+            updateCurrentSessions(getState())
+        ];
 
-    let updateTimer = () => {
-        wrappedUpdate("time", { now: new Date() });
+        if (updates.some(u => u)) {
+            renderApp();
+        }
 
-        setTimeout(updateTimer, 1000);
+        setTimeout(tick, 1000);
     };
 
-    wrappedUpdate(".", { ...initialState, ...data });
-    updateTimer();
-
-    // Subscribe to AppCache events so we can show a notice
-    // if an update is available
-
+    // Subscribe to AppCache events so we can show a notice when an update is available
     window.applicationCache.addEventListener(
         "updateready",
-        () => wrappedUpdate("update", { available: true }),
+        () => updateState("update", { available: true }),
         false);
+
+    // initial state
+    updateState(".", { ...initialState, ...normaliseSessionData(data) });
+
+    // Start ticking
+    tick();
 }

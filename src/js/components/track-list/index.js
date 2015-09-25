@@ -8,11 +8,9 @@ export class TrackList extends Component {
     render() {
         const { tracks } = this.props;
 
-        let trackData = Object.keys(tracks).map(name => ({ name, sessions: tracks[name] }));
-
         return (
             <div className="track-list">
-                {trackData.map(track => {
+                {tracks.map(track => {
                     return (
                         <div className="track-list__track">
                             <Track {...track} />

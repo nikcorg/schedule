@@ -5,27 +5,34 @@ import Track from "../track";
 const log = debug("schedule:components:next-up");
 
 export class NextUp extends Component {
-    render() {
-        const { getState } = this.props;
-        const { days, time: { today, now } } = getState();
+    updateNextSessions(props) {
+        const { getState } = props;
+        const { upcoming, tracks, sessions } = getState();
 
-        let currentDay = Object.keys(days).filter(d => today <= new Date(d)).shift();
-        let tracks = Object.keys(days[currentDay].tracks).map(name => ({ name, sessions: days[currentDay].tracks[name] }));
-
-        let nextSessions = tracks.map(t => {
-            return {
-                ...t,
-                sessions: [t.sessions.filter(s => now <= s.start).shift()]
-            };
-        }).
-        sort((a, b) => {
-            return Number(a.sessions[0].start) - Number(b.sessions[0].start);
+        this.setState({
+            sessions: upcoming.sessions.
+                map(id => sessions[id]).
+                reduce((a, s) => null == a.find(ss => s.track === ss.track) ? [...a, s] : a, []).
+                slice(0, 3).
+                map(s => ({ ...tracks[s.track], sessions: [s] }))
         });
+    }
+
+    componentWillMount() {
+        this.updateNextSessions(this.props);
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.updateNextSessions(newProps);
+    }
+
+    render() {
+        const { sessions } = this.state;
 
         return (
             <div className="next-up">
                 {
-                    nextSessions.map(t => {
+                    sessions.map(t => {
                         return (
                             <div key={t.name} className="next-up__track">
                                 <Track { ...t } />

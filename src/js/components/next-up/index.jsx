@@ -1,6 +1,6 @@
 import debug from "debug";
 import React, { Component } from "react";
-import Session from "../session";
+import Track from "../track";
 
 const log = debug("schedule:components:next-up");
 
@@ -27,9 +27,8 @@ export class NextUp extends Component {
                 {
                     nextSessions.map(t => {
                         return (
-                            <div className="next-up__session">
-                                <h2>Track: {t.name}</h2>
-                                <Session session={t.next} />
+                            <div key={t.name} className="next-up__session">
+                                <Track { ...t } />
                             </div>
                         );
                     })

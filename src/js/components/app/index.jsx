@@ -40,9 +40,9 @@ export class App extends Component {
         const { event: { name }, main: { view }, time: { now } } = getState();
 
         const links = [
-            { title: "Code of Conduct", view: "coc" },
-            { title: "Session list", view: "default" },
-            { title: "Fork me", view: "repo-info" }
+            { title: "CoC", view: "coc" },
+            { title: "Sessions", view: "default" },
+            { title: "Fork!", view: "repo-info" }
         ];
 
         let footerLinks = links.map(l => {

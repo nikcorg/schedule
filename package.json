@@ -9,9 +9,9 @@
   "scripts": {
     "lint": "eslint src/js",
     "test": "tape src/**/*.spec.js",
-    "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"-dev\" npm run build:clean && npm run watch:all",
+    "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"-dev\" npm run watch:all",
     "build": "NODE_ENV=\"production\" JSTRANSFORMS=\"-g uglifyify\" npm run build:all",
-    "watch:all": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
+    "watch:all": "npm run build:clean && parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "watch:js": "nodemon --watch src/js -e js,jsx --exec \"npm run build:js && npm run build:manifest\" -q",
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css && npm run build:manifest\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html && npm run build:manifest\" -q",

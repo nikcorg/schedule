@@ -101,8 +101,15 @@ function updateCurrentSessions(state) {
     return updateState("current", { sessions: current });
 }
 
-function updateTimer() {
-    return updateState("time", { now: new Date() });
+function updateTimer(state) {
+    let { time } = state;
+    let now = new Date();
+
+    if (now !== time.now) {
+        return updateState("time", { now: new Date() });
+    }
+
+    return false;
 }
 
 export function start() {
@@ -119,7 +126,7 @@ export function start() {
 
     let tick = () => {
         let updates = [
-            updateTimer(),
+            updateTimer(getState()),
             updateUpcomingSessions(getState()),
             updateCurrentSessions(getState())
         ];

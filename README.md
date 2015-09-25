@@ -12,4 +12,8 @@ Pull requests welcome.
 
 `npm run watch` watches files in the `src` folder and rebuilds on change. No live update, sorry.
 
+`npm run build` builds the project with `NODE_ENV=production`.
 
+## Known bugs
+
+- Does not take in account your computer's timezone setting, vs. local time

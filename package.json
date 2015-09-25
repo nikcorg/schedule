@@ -15,7 +15,7 @@
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html\" -q",
     "build:all": "npm run build:html && npm run build:css && npm run build:js && npm run build:manifest",
-    "build:js": "echo $TRANSFORMS; browserify $DEBUG_BUILD ${TRANSFORMS-npm_package_config_transforms} --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX}.js",
+    "build:js": "browserify $DEBUG_BUILD ${TRANSFORMS-npm_package_config_transforms} --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${npm_package_version}${BUILD_SUFFIX}.css src/css/global.css",
     "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${npm_package_version}${BUILD_SUFFIX}/\" -e 's/__MANIFEST__/$MANIFEST/' < {} > pub/${F#*/}' \\;",
     "build:manifest": "sed -e \"s/__VERSION__/${npm_package_version}/\" < src/schedule.appcache > pub/schedule.appcache && find pub -type f ! -name '.*' ! -name '*.appcache' | sed -e 's/pub/./g' >> pub/schedule.appcache",

@@ -26,6 +26,13 @@ header {
     top: 0;
 }
 
+.header__update-notice {
+    background-color: var(--notice-bg);
+    color: var(--notice-fg);
+    padding: 8px;
+    text-align: center;
+}
+
 footer {
     background-color: var(--footer-bg);
     border-top: 1px solid black;

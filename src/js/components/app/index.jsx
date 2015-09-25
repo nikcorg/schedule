@@ -33,17 +33,27 @@ export class App extends Component {
         const { getState } = this.props;
         const { event: { name, coc }, main: { view } } = getState();
 
+        const links = [
+            { title: "Code of Conduct", view: "coc" },
+            { title: "Session list", view: "default" },
+            { title: "Fork me", view: "repo-info" }
+        ];
+
+        let footerLinks = links.map(l => {
+            return (
+                <div className="footer__link">
+                    <a href="#" onClick={e => (e.preventDefault(), this.switchView(l.view))}>{l.title}</a>
+                </div>
+            );
+        });
+
         return (
             <div>
                 <header className="header"><h1>{name}</h1></header>
                 <main>
                     {this.getMainView(view)}
                 </main>
-                <footer className="footer">
-                    <a href={coc.link} onClick={(e) => this.onCocClicked(e)}><abbr title="Code of Conduct">CoC</abbr></a>
-                    {" | "}
-                    <a href="/" onClick={(e) => this.onTLClicked(e)}>Track list</a>
-                </footer>
+                <footer className="footer">{footerLinks}</footer>
             </div>
         );
     }

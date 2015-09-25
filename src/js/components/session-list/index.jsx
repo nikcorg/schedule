@@ -26,7 +26,7 @@ export class SessionList extends Component {
         const { sessions } = this.props;
 
         let now = Date.now();
-        let show = MODE_FILTERED !== mode ? sessions : sessions.filter(s => now <= Number(s.start) + MARGIN);
+        let show = 1 < sessions.length && MODE_FILTERED === mode ? sessions.filter(s => now <= Number(s.start) + MARGIN) : sessions;
         let sessionComps = show.map(s => {
             return (
                 <div className="session-list__session">

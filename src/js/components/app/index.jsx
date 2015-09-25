@@ -60,7 +60,7 @@ export class App extends Component {
                     {this.getMainView(view)}
                 </main>
                 <footer className="footer">
-                    <div className="footer__navgiation">{footerLinks}</div>
+                    <div className="footer__navigation">{footerLinks}</div>
                     <div className="footer__current-time">{moment(now).format(DATE_FORMAT)}</div>
                 </footer>
             </div>

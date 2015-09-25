@@ -37,7 +37,7 @@ export class App extends Component {
 
     render() {
         const { getState } = this.props;
-        const { event: { name }, main: { view }, time: { now } } = getState();
+        const { event: { name }, main: { view }, time, update } = getState();
 
         const links = [
             { title: "CoC", view: "coc" },
@@ -55,13 +55,21 @@ export class App extends Component {
 
         return (
             <div>
-                <header className="header"><h1>{name}</h1></header>
+                <header className="header">
+                    <h1>{name}</h1>
+                    {
+                        update.available &&
+                        <div className="header__update-notice">
+                            <p>A new version is available. Reload to apply update.</p>
+                        </div>
+                    }
+                </header>
                 <main>
                     {this.getMainView(view)}
                 </main>
                 <footer className="footer">
                     <div className="footer__navigation">{footerLinks}</div>
-                    <div className="footer__current-time">{moment(now).format(DATE_FORMAT)}</div>
+                    <div className="footer__current-time">{moment(time.now).format(DATE_FORMAT)}</div>
                 </footer>
             </div>
         );

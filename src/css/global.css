@@ -24,6 +24,7 @@ header {
     right: 0;
     text-align: center;
     top: 0;
+    z-index: var(--header-z);
 }
 
 .header__update-notice {
@@ -46,6 +47,7 @@ footer {
     padding-top: 5px;
     position: fixed;
     right: 0;
+    z-index: var(--footer-z);
 }
 
 main {
@@ -53,6 +55,7 @@ main {
     padding-top: var(--header-height);
     padding-left: var(--edge-padding);
     padding-right: var(--edge-padding);
+    z-index: var(--main-z);
 }
 
 .footer__navigation {

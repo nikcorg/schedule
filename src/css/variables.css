@@ -14,4 +14,8 @@
 
     --main-bg: #eee;
     --main-fg: #333;
+
+    --header-z: 20;
+    --footer-z: 20;
+    --main-z: 10;
 }

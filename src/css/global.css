@@ -73,3 +73,16 @@ main {
 .presenter__twitter {
     display: block;
 }
+
+.session-list__mode-switcher {
+    text-align: center;
+}
+
+.session-list__mode-switcher a {
+    color: var(--main-fg);
+    text-decoration: none;
+}
+
+.session-list__mode-switcher a.active {
+    font-weight: bold;
+}

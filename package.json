@@ -1,6 +1,6 @@
 {
   "name": "jsconf-schedule-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "JSConf Schedule App Thingy",
   "config": {
     "transforms": "-t [ babelify --loose all --stage 0 ] -t envify",

@@ -1,10 +1,13 @@
 import debug from "debug";
+import moment from "moment";
 import React, { Component, PropTypes } from "react";
 import CoC from "../coc";
 import DayList from "../day-list";
 import RepoInfo from "../repo-info";
 
 const log = debug("schedule:components:app");
+
+const DATE_FORMAT = "HH:mm";
 
 export class App extends Component {
     onCocClicked(e) {
@@ -34,7 +37,7 @@ export class App extends Component {
 
     render() {
         const { getState } = this.props;
-        const { event: { name, coc }, main: { view } } = getState();
+        const { event: { name }, main: { view }, time: { now } } = getState();
 
         const links = [
             { title: "Code of Conduct", view: "coc" },
@@ -56,7 +59,10 @@ export class App extends Component {
                 <main>
                     {this.getMainView(view)}
                 </main>
-                <footer className="footer">{footerLinks}</footer>
+                <footer className="footer">
+                    <div className="footer__navgiation">{footerLinks}</div>
+                    <div className="footer__current-time">{moment(now).format(DATE_FORMAT)}</div>
+                </footer>
             </div>
         );
     }

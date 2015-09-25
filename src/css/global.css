@@ -71,6 +71,17 @@ main {
     margin-left: 8px;
 }
 
+.footer__link a {
+    color: var(--footer-fg);
+    text-decoration: none;
+}
+
+.footer__link--active a {
+    background-color: var(--footer-inverse-bg);
+    color: var(--footer-inverse-fg);
+    font-weight: bold;
+}
+
 .footer__link:before {
     content: "| ";
 }

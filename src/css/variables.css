@@ -11,6 +11,8 @@
     --footer-bg: #ddd;
     --footer-fg: #333;
     --footer-height: 50px;
+    --footer-inverse-bg: #333;
+    --footer-inverse-fg: #ddd;
 
     --main-bg: #eee;
     --main-fg: #333;

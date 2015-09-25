@@ -21,7 +21,6 @@ export class NextUp extends Component {
 
         return (
             <div className="next-up">
-                <p>Next up:</p>
                 {
                     nextSessions.map(t => {
                         return (

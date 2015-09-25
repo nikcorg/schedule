@@ -14,6 +14,3 @@ Pull requests welcome.
 
 `npm run build` builds the project with `NODE_ENV=production`.
 
-## Known bugs
-
-- Does not take in account your computer's timezone setting, vs. local time

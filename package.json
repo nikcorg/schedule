@@ -20,7 +20,7 @@
     "build:js": "browserify $DEBUG_BUILD $JSTRANSFORMS $npm_package_config_transforms --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${npm_package_version}${BUILD_SUFFIX}.css src/css/global.css",
     "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${npm_package_version}${BUILD_SUFFIX}/\" -e 's/__MANIFEST__/.\\\\\\\\/$npm_package_config_manifest/' < {} > pub/${F#*/}' \\;",
-    "build:manifest": "MANIFEST_VERSION=$(cat .manifest-version) npm run manifest",
+    "build:manifest": "MANIFEST_VERSION=$(test -f .manifest-version && cat .manifest-version || echo 0 > .manifest-version) npm run manifest",
     "manifest": "npm run manifest:copy-template && npm run manifest:append-filelist && npm run manifest:bump-version",
     "manifest:copy-template": "sed -e \"s/__VERSION__/${npm_package_version}-$MANIFEST_VERSION/\" < src/$npm_package_config_manifest > pub/$npm_package_config_manifest",
     "manifest:append-filelist": "find pub -type f ! -name '.*' ! -name '*.appcache' | sed -e 's/pub/./g' >> pub/$npm_package_config_manifest",

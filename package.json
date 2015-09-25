@@ -6,15 +6,16 @@
     "lint": "eslint src/js",
     "test": "tape src/**/*.spec.js",
     "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"-dev\" npm run watch:all",
-    "build": "NODE_ENV=\"production\" npm run build:all",
+    "build": "NODE_ENV=\"production\" MANIFEST=\"manifest='.\\/schedule.appcache'\" npm run build:all",
     "watch:all": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "watch:js": "nodemon --watch src/js -e js,jsx --exec \"npm run build:js\" -q",
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html\" -q",
-    "build:all": "npm run build:html & npm run build:css & npm run build:js",
-    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all --stage 0 ] -t envify -t brfs --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX-$npm_package_version}.js",
+    "build:all": "npm run build:html && npm run build:css && npm run build:js && npm run build:manifest",
+    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all --stage 0 ] -t envify -t brfs --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${npm_package_version}${BUILD_SUFFIX}.css src/css/global.css",
-    "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${npm_package_version}${BUILD_SUFFIX}/\" < {} > pub/${F#*/}' \\;",
+    "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${npm_package_version}${BUILD_SUFFIX}/\" -e 's/__MANIFEST__/$MANIFEST/' < {} > pub/${F#*/}' \\;",
+    "build:manifest": "sed -e \"s/__VERSION__/${npm_package_version}/\" < src/schedule.appcache > pub/schedule.appcache && find pub -type f ! -name '.*' ! -name '*.appcache' | sed -e 's/pub/./g' >> pub/schedule.appcache",
     "postinstall": "./git-hooks/hook-uninstall all && ./git-hooks/hook-install pre-push && ./git-hooks/hook-install prepare-commit-msg"
   },
   "author": "Niklas Lindgren <nikc@iki.fi>",
@@ -32,7 +33,8 @@
     "parallelshell": "^2.0.0",
     "postcss": "^4.1.16",
     "postcss-cli": "^1.5.0",
-    "tape": "^4.0.3"
+    "tape": "^4.0.3",
+    "uglifyify": "^3.0.1"
   },
   "dependencies": {
     "debug": "^2.2.0",

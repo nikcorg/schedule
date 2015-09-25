@@ -15,8 +15,11 @@ export class NextUp extends Component {
         let nextSessions = tracks.map(t => {
             return {
                 ...t,
-                next: t.sessions.filter(s => now <= s.start).shift()
+                sessions: [t.sessions.filter(s => now <= s.start).shift()]
             };
+        }).
+        sort((a, b) => {
+            return Number(a.sessions[0].start) - Number(b.sessions[0].start);
         });
 
         return (

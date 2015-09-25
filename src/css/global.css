@@ -104,3 +104,15 @@ main {
 .session-list__mode-switcher a.active {
     font-weight: bold;
 }
+
+.track__header {
+    position: relative;
+}
+
+.track__collapser {
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -14,6 +14,7 @@ body {
 header {
     background-color: var(--header-bg);
     border-bottom: 1px solid black;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
     color: var(--header-fg);
     height: var(--header-height);
     left: 0;
@@ -29,7 +30,9 @@ footer {
     background-color: var(--footer-bg);
     border-top: 1px solid black;
     bottom: 0;
+    clear: both;
     left: 0;
+    overflow: hidden;
     padding-bottom: 5px;
     padding-left: var(--edge-padding);
     padding-right: var(--edge-padding);
@@ -43,6 +46,14 @@ main {
     padding-top: var(--header-height);
     padding-left: var(--edge-padding);
     padding-right: var(--edge-padding);
+}
+
+.footer__navigation {
+    float: left;
+}
+
+.footer__current-time {
+    float: right;
 }
 
 .footer__link {

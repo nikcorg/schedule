@@ -44,3 +44,20 @@ main {
     padding-left: var(--edge-padding);
     padding-right: var(--edge-padding);
 }
+
+.footer__link {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.footer__link:before {
+    content: "| ";
+}
+
+.footer__link:first-child {
+    margin-left: 0;
+}
+
+.footer__link:first-child:before {
+    content: "";
+}

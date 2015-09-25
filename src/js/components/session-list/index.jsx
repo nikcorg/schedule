@@ -37,12 +37,15 @@ export class SessionList extends Component {
 
         return (
             <div className="session-list">
-                <div className="session-list__mode-switcher">
-                    <a href="#" onClick={e => (e.preventDefault(), this.switchMode(MODE_ALL))}
-                        className={mode !== MODE_FILTERED && "active"}>All</a>
-                    {" | "}
-                    <a href="#" onClick={e => (e.preventDefault(), this.switchMode(MODE_FILTERED))} className={mode === MODE_FILTERED && "active"}>Upcoming</a>
-                </div>
+                {
+                    1 < sessionComps.length &&
+                    <div className="session-list__mode-switcher">
+                        <a href="#" onClick={e => (e.preventDefault(), this.switchMode(MODE_ALL))}
+                            className={mode !== MODE_FILTERED && "active"}>All</a>
+                        {" | "}
+                        <a href="#" onClick={e => (e.preventDefault(), this.switchMode(MODE_FILTERED))} className={mode === MODE_FILTERED && "active"}>Upcoming</a>
+                    </div>
+                }
 
                 {sessionComps}
             </div>

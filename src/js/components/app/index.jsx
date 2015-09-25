@@ -11,16 +11,6 @@ const log = debug("schedule:components:app");
 const DATE_FORMAT = "HH:mm";
 
 export class App extends Component {
-    onCocClicked(e) {
-        e.preventDefault();
-        this.switchView("coc");
-    }
-
-    onTLClicked(e) {
-        e.preventDefault();
-        this.switchView("tracklist");
-    }
-
     switchView(view) {
         this.props.updateState("main", { view });
     }

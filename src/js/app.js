@@ -10,6 +10,7 @@ const initialState = {
         view: "default"
     },
     time: {
+        today: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
         now: new Date()
     },
     update: {

@@ -2,6 +2,7 @@ import debug from "debug";
 import React, { Component, PropTypes } from "react";
 import CoC from "../coc";
 import DayList from "../day-list";
+import RepoInfo from "../repo-info";
 
 const log = debug("schedule:components:app");
 
@@ -22,6 +23,8 @@ export class App extends Component {
 
     getMainView(view) {
         switch (view) {
+        case "repo-info":
+            return <RepoInfo />
         case "coc":
             return <CoC { ...this.props } />;
         default:

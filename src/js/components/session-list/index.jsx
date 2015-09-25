@@ -30,7 +30,7 @@ export class SessionList extends Component {
 }
 
 SessionList.propTypes = {
-    getState: PropTypes.func.isRequired
+    sessions: PropTypes.array.isRequired
 };
 
 export default SessionList;

@@ -1,5 +1,6 @@
 {
     "event": {
+        "tzOffset": -120,
         "name": "JSConf EU 2015",
         "twitter": {
             "hashtag": "#jsconfeu",

@@ -10,7 +10,7 @@ export class Session extends Component {
         const { session } = this.props;
         return (
             <div className="session">
-                <h4><a href="{session.link}">{session.title}</a></h4>
+                <h4><a href={session.link}>{session.title}</a></h4>
                 <div className="session__time">
                     <span className="session__start">{moment(session.start).calendar()}</span>
                     {" "}

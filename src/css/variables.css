@@ -1,8 +1,8 @@
 :root {
     --edge-padding: 8px;
 
-    --header-bg: #f00;
-    --header-fg: #0B0B0B;
+    --header-bg: #e10079;
+    --header-fg: #fff;
     --header-height: 70px;
 
     --footer-bg: #ddd;

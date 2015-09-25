@@ -3,6 +3,7 @@ import moment from "moment";
 import React, { Component, PropTypes } from "react";
 import CoC from "../coc";
 import DayList from "../day-list";
+import NextUp from "../next-up";
 import RepoInfo from "../repo-info";
 
 const log = debug("schedule:components:app");
@@ -30,8 +31,10 @@ export class App extends Component {
             return <RepoInfo />
         case "coc":
             return <CoC { ...this.props } />;
-        default:
+        case "sessions":
             return <DayList { ...this.props } />;
+        default:
+            return <NextUp { ...this.props } />;
         }
     }
 
@@ -41,8 +44,9 @@ export class App extends Component {
 
         const links = [
             { title: "CoC", view: "coc" },
-            { title: "Sessions", view: "default" },
-            { title: "Fork!", view: "repo-info" }
+            { title: "Next up", view: "next-up" },
+            { title: "Sessions", view: "sessions" },
+            { title: "Fork me!", view: "repo-info" }
         ];
 
         let footerLinks = links.map(l => {

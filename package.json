@@ -2,17 +2,20 @@
   "name": "jsconf-schedule-app",
   "version": "1.0.1",
   "description": "JSConf Schedule App Thingy",
+  "config": {
+    "transforms": "-t [ babelify --loose all --stage 0 ] -t envify"
+  },
   "scripts": {
     "lint": "eslint src/js",
     "test": "tape src/**/*.spec.js",
     "watch": "NODE_ENV=\"dev\" DEBUG_BUILD=\"--debug\" BUILD_SUFFIX=\"-dev\" npm run watch:all",
-    "build": "NODE_ENV=\"production\" MANIFEST=\"manifest='.\\/schedule.appcache'\" npm run build:all",
+    "build": "NODE_ENV=\"production\" MANIFEST=\"manifest='.\\/schedule.appcache'\" TRANSFORMS=\"$npm_package_config_transforms -g uglifyify\" npm run build:all",
     "watch:all": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "watch:js": "nodemon --watch src/js -e js,jsx --exec \"npm run build:js\" -q",
     "watch:css": "nodemon --watch src/css -e css --exec \"npm run build:css\" -q",
     "watch:html": "nodemon --watch src -e html --exec \"npm run build:html\" -q",
     "build:all": "npm run build:html && npm run build:css && npm run build:js && npm run build:manifest",
-    "build:js": "browserify $DEBUG_BUILD -t [ babelify --loose all --stage 0 ] -t envify -t brfs --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX}.js",
+    "build:js": "echo $TRANSFORMS; browserify $DEBUG_BUILD ${TRANSFORMS-npm_package_config_transforms} --extension .js --extension .json --extension .jsx src/js/bootstrap.js > pub/bundle-${npm_package_version}${BUILD_SUFFIX}.js",
     "build:css": "postcss -u cssnext -o pub/styles-${npm_package_version}${BUILD_SUFFIX}.css src/css/global.css",
     "build:html": "find src -name \"*.html\" -exec env F={} sh -c 'mkdir -p pub/$(dirname ${F#*/}) ; sed -e \"s/__VERSION__/${npm_package_version}${BUILD_SUFFIX}/\" -e 's/__MANIFEST__/$MANIFEST/' < {} > pub/${F#*/}' \\;",
     "build:manifest": "sed -e \"s/__VERSION__/${npm_package_version}/\" < src/schedule.appcache > pub/schedule.appcache && find pub -type f ! -name '.*' ! -name '*.appcache' | sed -e 's/pub/./g' >> pub/schedule.appcache",
@@ -22,8 +25,9 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.21",
+    "babel-core": "^5.8.25",
+    "babel-eslint": "^4.1.3",
     "babelify": "^6.1.3",
-    "brfs": "^1.4.1",
     "browserify": "^11.0.1",
     "cssnext": "^1.8.3",
     "envify": "^3.4.0",
@@ -39,7 +43,6 @@
   "dependencies": {
     "debug": "^2.2.0",
     "moment": "^2.10.6",
-    "react-redux": "^2.1.2",
-    "redux": "^3.0.0"
+    "react": "^0.13.3"
   }
 }

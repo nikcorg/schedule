@@ -66,9 +66,9 @@ function normaliseSessionData(conference) {
 function updateUpcomingSessions(state) {
     const { sessions, time: { now } } = state;
 
-    let upcoming = sessions.filter(s => now <= s.start);
+    let upcoming = sessions.filter(s => now <= s.start).sort((a, b) => a.start - b.start).map(s => s.id);
 
-    return updateState("upcoming", upcoming);
+    return updateState("upcoming", { sessions: upcoming });
 }
 
 function updateCurrentSessions(state) {
@@ -78,9 +78,11 @@ function updateCurrentSessions(state) {
         let duration = (s.hasOwnProperty("duration") ? s.duration : OE_GUESSTIMATE) * 60 * 1000;
         let sessionEnd = Number(s.start) + duration;
         return now >= s.start && Number(now) <= sessionEnd;
-    });
+    }).
+    sort((a, b) => a.start - b.start).
+    map(s => s.id);
 
-    return updateState("current", current);
+    return updateState("current", { sessions: current });
 }
 
 function updateTimer() {

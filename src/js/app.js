@@ -7,7 +7,7 @@ const log = debug("app:app");
 
 const initialState = {
     main: {
-        view: "default"
+        view: "next-up"
     },
     time: {
         today: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
@@ -28,7 +28,7 @@ function updateState(branch, patch) {
     if ("." === branch) {
         currentState = { ...currentState, ...patch };
     } else {
-        currentState = { ...currentState, [branch]: patch };
+        currentState = { ...currentState, [branch]: { ...currentState[branch], ...patch } };
     }
 
     return getState();

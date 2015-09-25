@@ -11,6 +11,9 @@ const initialState = {
     },
     time: {
         now: new Date()
+    },
+    update: {
+        available: false
     }
 };
 
@@ -61,4 +64,12 @@ export function start() {
 
     wrappedUpdate(".", { ...initialState, ...data });
     updateTimer();
+
+    // Subscribe to AppCache events so we can show a notice
+    // if an update is available
+
+    window.applicationCache.addEventListener(
+        "updateready",
+        () => wrappedUpdate("update", { available: true }),
+        false);
 }

@@ -13,7 +13,7 @@ const initialState = {
     },
     time: {
         today: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
-        now: new Date()
+        now: 0
     },
     update: {
         available: false
@@ -105,8 +105,10 @@ function updateTimer(state) {
     let { time } = state;
     let now = new Date();
 
+    let tzDiff = (now.getTimezoneOffset() - state.event.tzOffset) * 60 * 1000;
+
     if (now !== time.now) {
-        return updateState("time", { now: new Date() });
+        return updateState("time", { now: new Date(Number(now) + tzDiff) });
     }
 
     return false;

@@ -27,7 +27,7 @@ export class NextUp extends Component {
                 {
                     nextSessions.map(t => {
                         return (
-                            <div key={t.name} className="next-up__session">
+                            <div key={t.name} className="next-up__track">
                                 <Track { ...t } />
                             </div>
                         );

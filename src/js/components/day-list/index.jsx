@@ -53,7 +53,7 @@ export class DayList extends Component {
 
         return (
             <div className="daylist">
-                <div className="session-list__mode-switcher">
+                <div className="daylist__mode-switcher">
                     <a href="#" onClick={e => (e.preventDefault(), this.switchMode(MODE_ALL))}
                         className={MODE_ALL === mode && "active"}>All</a>
                     {" | "}

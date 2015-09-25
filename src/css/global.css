@@ -106,16 +106,17 @@ main {
     display: block;
 }
 
-.session-list__mode-switcher {
+.daylist__mode-switcher {
+    margin-top: 15px;
     text-align: center;
 }
 
-.session-list__mode-switcher a {
+.daylist__mode-switcher a {
     color: var(--main-fg);
     text-decoration: none;
 }
 
-.session-list__mode-switcher a.active {
+.daylist__mode-switcher a.active {
     font-weight: bold;
 }
 

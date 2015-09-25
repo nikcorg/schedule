@@ -39,8 +39,7 @@ export class App extends Component {
             { title: "CoC", view: "coc" },
             { title: "Now", view: "now" },
             { title: "Next up", view: "next-up" },
-            { title: "Sessions", view: "sessions" },
-            { title: "Fork me!", view: "repo-info" }
+            { title: "Sessions", view: "sessions" }
         ];
 
         let footerLinks = links.map(l => {

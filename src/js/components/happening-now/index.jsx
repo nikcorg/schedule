@@ -2,36 +2,37 @@ import debug from "debug";
 import React, { Component } from "react";
 import Track from "../track";
 
-const OE_GUESSTIMATE = 180;
 const log = debug("schedule:components:happening-now");
 
 export class HappeningNow extends Component {
-    render() {
-        const { getState } = this.props;
-        const { days, time: { today, now } } = getState();
+    updateCurrentSessions(props) {
+        const { getState } = props;
+        const { current, tracks, sessions } = getState();
 
-        let currentDay = Object.keys(days).filter(d => today <= new Date(d)).shift();
-        let tracks = Object.keys(days[currentDay].tracks).map(name => ({ name, sessions: days[currentDay].tracks[name] }));
-
-        let currentSessions = tracks.map(t => {
-            return {
-                ...t,
-                sessions: t.sessions.filter(s => {
-                    let duration = (s.hasOwnProperty("duration") ? s.duration : OE_GUESSTIMATE) * 60 * 1000;
-                    let sessionEnd = Number(s.start) + duration;
-                    return now >= s.start && Number(now) <= sessionEnd;
-                }).slice(0, 1)
-            };
-        }).
-        filter(t => 0 < t.sessions.length);
-        currentSessions = currentSessions.sort((a, b) => {
-            return Number(a.sessions[0].start) - Number(b.sessions[0].start);
+        this.setState({
+            sessions: current.sessions.
+                map(id => sessions[id]).
+                reduce((a, s) => null == a.find(ss => s.track === ss.track) ? [...a, s] : a, []).
+                slice(0, 3).
+                map(s => ({ ...tracks[s.track], sessions: [s] }))
         });
+    }
+
+    componentWillMount() {
+        this.updateCurrentSessions(this.props);
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.updateCurrentSessions(newProps);
+    }
+
+    render() {
+        const { sessions } = this.state;
 
         return (
             <div className="current-sessions">
                 {
-                    currentSessions.map(t => {
+                    sessions.map(t => {
                         return (
                             <div key={t.name} className="current-sessions__track">
                                 <Track { ...t } />

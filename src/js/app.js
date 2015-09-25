@@ -44,13 +44,17 @@ function renderMain(props) {
 }
 
 function normaliseSessionData(conference) {
-    let days = Object.keys(data.days).map((d, did) => {
+    let days = Object.keys(conference.days).map((d, did) => {
         return { id: did, date: new Date(d), tracks: data.days[d].tracks };
+    }).
+    map(day => {
+        return {
+            ...day,
+            tracks: Object.keys(day.tracks).map(t => ({ name: t, day: day.id, sessions: day.tracks[t] }))
+        };
     });
 
-    let tracks = days.map(day => {
-        return Object.keys(day.tracks).map(t => ({ name: t, day: day.id, sessions: day.tracks[t] }));
-    }).
+    let tracks = days.map(d => d.tracks).
     reduce((a, ts) => a.concat(ts), []).
     map((t, tid) => ({ id: tid, ...t }));
 
@@ -60,7 +64,19 @@ function normaliseSessionData(conference) {
     reduce((a, ts) => a.concat(ts), []).
     map((s, sid) => ({ id: sid, ...s }));
 
-    return { ...conference, days, tracks, sessions };
+    // Drop sessions from tracks
+    tracks = tracks.map(t => {
+        let { sessions, ...rest } = t;
+        return rest;
+    });
+
+    // Drop tracks from days
+    days = days.map(d => {
+        let { tracks, ...rest } = d;
+        return rest;
+    });
+
+    return { ...conference, sessions, tracks, days };
 }
 
 function updateUpcomingSessions(state) {

@@ -8,6 +8,9 @@ const log = debug("app:app");
 const initialState = {
     main: {
         view: "default"
+    },
+    time: {
+        now: new Date()
     }
 };
 
@@ -50,5 +53,12 @@ export function start() {
         });
     });
 
+    let updateTimer = () => {
+        wrappedUpdate("time", { now: new Date() });
+
+        setTimeout(updateTimer, 1000);
+    };
+
     wrappedUpdate(".", { ...initialState, ...data });
+    updateTimer();
 }

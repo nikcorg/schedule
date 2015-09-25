@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from "react";
 import CoC from "../coc";
 import DayList from "../day-list";
 import NextUp from "../next-up";
+import HappeningNow from "../happening-now";
 import RepoInfo from "../repo-info";
 
 const log = debug("schedule:components:app");
@@ -18,11 +19,13 @@ export class App extends Component {
     getMainView(view) {
         switch (view) {
         case "repo-info":
-            return <RepoInfo />
+            return <RepoInfo />;
         case "coc":
             return <CoC { ...this.props } />;
         case "sessions":
             return <DayList { ...this.props } />;
+        case "now":
+            return <HappeningNow { ...this.props } />;
         default:
             return <NextUp { ...this.props } />;
         }
@@ -34,6 +37,7 @@ export class App extends Component {
 
         const links = [
             { title: "CoC", view: "coc" },
+            { title: "Now", view: "now" },
             { title: "Next up", view: "next-up" },
             { title: "Sessions", view: "sessions" },
             { title: "Fork me!", view: "repo-info" }
@@ -62,7 +66,7 @@ export class App extends Component {
                     {this.getMainView(view)}
                 </main>
                 <footer className="footer">
-                    <div className="footer__navigation">{footerLinks}</div>
+                    <div className="footer__navigation"><nav>{footerLinks}</nav></div>
                     <div className="footer__current-time">{moment(time.now).format(DATE_FORMAT)}</div>
                 </footer>
             </div>

@@ -32,13 +32,15 @@ export class HappeningNow extends Component {
         return (
             <div className="current-sessions">
                 {
-                    sessions.map(t => {
+                    0 < sessions.length
+                    ? sessions.map(t => {
                         return (
                             <div key={t.name} className="current-sessions__track">
                                 <Track { ...t } />
                             </div>
                         );
                     })
+                    : <p>No sessions right now :-(</p>
                 }
             </div>
         );

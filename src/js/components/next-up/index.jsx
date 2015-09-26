@@ -32,13 +32,15 @@ export class NextUp extends Component {
         return (
             <div className="next-up">
                 {
-                    sessions.map(t => {
+                    0 < sessions.length
+                    ? sessions.map(t => {
                         return (
-                            <div key={t.name} className="next-up__track">
+                            <div key={t.id} className="next-up__track">
                                 <Track { ...t } />
                             </div>
                         );
                     })
+                    : <p>No upcoming sessions :-(</p>
                 }
             </div>
         );

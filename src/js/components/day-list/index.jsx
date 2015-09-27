@@ -22,11 +22,15 @@ export class DayList extends Component {
             map(d => {
                 return {
                     ...d,
-                    tracks: tracks.filter(t => t.day === d.id).
+                    tracks: tracks.
+                        filter(t => t.day === d.id).
                         map(t => ({
                             ...t,
-                            sessions: sessions.filter(s => s.track === t.id).filter(s => MODE_ALL === mode ? s : now <= s.start + TIME_MARGIN)
-                        }))
+                            sessions: sessions.
+                                filter(s => s.track === t.id).
+                                filter(s => MODE_ALL === mode ? s : now <= s.start + TIME_MARGIN)
+                        })).
+                        filter(t => 0 < t.sessions.length)
                 };
             })
         });

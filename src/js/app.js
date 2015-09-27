@@ -1,7 +1,7 @@
 import debug from "debug";
 import data from "../../data/schedule";
 import React from "react";
-import { getState, updateState } from "./store";
+import { getState, updateState, onUpdate } from "./store";
 import { App } from "./components/app";
 
 const log = debug("app:app");
@@ -102,7 +102,26 @@ function updateTimer(state) {
     return false;
 }
 
+function setPersistedFavourites(favourites) {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+}
+
+function getPersistedFavourites() {
+    let serialised = localStorage.getItem("favourites");
+    let favourites = { sessions: [] };
+
+    if (null != serialised) {
+        try {
+            favourites = JSON.parse(serialised);
+        } catch (err) {}
+    }
+
+    return favourites;
+}
+
 export function start() {
+    let favourites = getPersistedFavourites();
+
     // Wrapped update so state updates re-render the app
     let wrappedUpdate = (...update) => {
         if (updateState(...update)) {
@@ -114,16 +133,13 @@ export function start() {
         renderMain({ getState, updateState: wrappedUpdate });
     };
 
-    let tick = () => {
-        let updates = [
-            updateTimer(getState()),
-            updateUpcomingSessions(getState()),
-            updateCurrentSessions(getState())
-        ];
+    onUpdate(renderApp);
+    onUpdate("favourites", () => setPersistedFavourites(getState().favourites));
 
-        if (updates.some(u => u)) {
-            renderApp();
-        }
+    let tick = () => {
+        updateTimer(getState());
+        updateUpcomingSessions(getState());
+        updateCurrentSessions(getState());
 
         setTimeout(tick, 1000);
     };
@@ -135,7 +151,7 @@ export function start() {
         false);
 
     // initial state
-    updateState(".", { ...initialState, ...normaliseSessionData(data) });
+    updateState(".", { ...initialState, ...normaliseSessionData(data), favourites });
 
     // Start ticking
     tick();

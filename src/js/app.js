@@ -1,6 +1,7 @@
 import debug from "debug";
 import data from "../../data/schedule";
 import React from "react";
+import { getState, updateState } from "./store";
 import { App } from "./components/app";
 
 const log = debug("app:app");
@@ -17,24 +18,11 @@ const initialState = {
     },
     update: {
         available: false
+    },
+    favourites: {
+        sessions: []
     }
 };
-
-let currentState = initialState;
-
-function getState() {
-    return { ...currentState };
-}
-
-function updateState(branch, patch) {
-    if ("." === branch) {
-        currentState = { ...currentState, ...patch };
-    } else {
-        currentState = { ...currentState, [branch]: { ...currentState[branch], ...patch } };
-    }
-
-    return true;
-}
 
 function renderMain(props) {
     React.render(

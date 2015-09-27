@@ -1,5 +1,6 @@
 import debug from "debug";
 import React, { Component, PropTypes } from "react";
+import { updateState } from "../../store";
 import Day from "../day";
 
 const log = debug("schedule:components:day-list");
@@ -9,16 +10,11 @@ const MODE_FILTERED = "filtered";
 const MODE_ALL = "all";
 
 export class DayList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            mode: MODE_FILTERED
-        };
-    }
     updateDayListState(props) {
-        const { mode } = this.state;
         const { getState } = props;
-        const { time: { today, now }, days, tracks, sessions } = getState();
+        const state = getState();
+        const { mode } = state.daylist || { mode: MODE_FILTERED };
+        const { time: { today, now }, days, tracks, sessions } = state;
 
         this.setState({
             mode,
@@ -37,7 +33,7 @@ export class DayList extends Component {
     }
 
     switchMode(mode) {
-        this.setState({ mode });
+        updateState("daylist", { mode });
     }
 
     componentWillMount() {

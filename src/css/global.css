@@ -57,8 +57,6 @@ footer {
 main {
     padding-bottom: var(--footer-height);
     padding-top: var(--header-height);
-    padding-left: var(--edge-padding);
-    padding-right: var(--edge-padding);
     z-index: var(--main-z);
 }
 
@@ -110,6 +108,13 @@ main {
     display: block;
 }
 
+.day > h2 {
+    background-color: #333;
+    color: #eee;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
 .daylist__mode-switcher {
     margin-top: 15px;
     text-align: center;
@@ -125,6 +130,8 @@ main {
 }
 
 .track__header {
+    padding-left: var(--edge-padding);
+    padding-right: var(--edge-padding);
     position: relative;
 }
 

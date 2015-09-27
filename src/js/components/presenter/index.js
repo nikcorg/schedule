@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 
 export class Presenter extends Component {
+    resolveTwitterLink(props) {
+        const { presenter } = props;
+        let twitterUrl = presenter.hasOwnProperty("twitter")
+            ? `http://twitter.com/${presenter.twitter.replace(/^@/, "")}`
+            : null;
+
+        this.setState({ twitterUrl });
+    }
+
+    componentWillMount() {
+        this.resolveTwitterLink(this.props);
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.resolveTwitterLink(newProps);
+    }
+
     render() {
+        const { twitterUrl } = this.state;
         const { presenter } = this.props;
 
         return (
@@ -11,7 +29,7 @@ export class Presenter extends Component {
                 {
                     presenter.twitter &&
                     <span className="presenter__twitter">
-                        <a href="http://twitter.com/{presenter.twitter.substr(1)}">{presenter.twitter}</a>
+                        <a href={twitterUrl}>{presenter.twitter}</a>
                     </span>
                 }
             </div>

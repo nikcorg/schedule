@@ -60,6 +60,11 @@ main {
     z-index: var(--main-z);
 }
 
+.coc {
+    padding-left: var(--edge-padding);
+    padding-right: var(--edge-padding);
+}
+
 .footer__navigation {
     float: left;
 }
@@ -113,6 +118,8 @@ main {
     color: #eee;
     padding-top: 8px;
     padding-bottom: 8px;
+    padding-left: var(--edge-padding);
+    padding-right: var(--edge-padding);
 }
 
 .daylist__mode-switcher {

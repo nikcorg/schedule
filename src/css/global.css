@@ -135,3 +135,22 @@ main {
     top: 50%;
     transform: translateY(-50%);
 }
+
+.session {
+    padding: 0.5rem;
+}
+
+.session--favourite {
+    background-color: var(--favourite-bg);
+    color: var(--favourite-fg);
+}
+
+.favourite {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.favourite a {
+    color: var(--main-fg);
+    text-decoration: none;
+}

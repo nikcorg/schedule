@@ -21,6 +21,9 @@ const initialState = {
     },
     favourites: {
         sessions: []
+    },
+    daylist: {
+        mode: "filtered"
     }
 };
 
@@ -102,25 +105,27 @@ function updateTimer(state) {
     return false;
 }
 
-function setPersistedFavourites(favourites) {
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-}
+let getPersistedState = (keys) => {
+    return keys.map(key => {
+        let defaultValue = initialState[key];
+        let serialised = localStorage.getItem(key);
 
-function getPersistedFavourites() {
-    let serialised = localStorage.getItem("favourites");
-    let favourites = { sessions: [] };
+        let value = null == serialised ? defaultValue : JSON.parse(serialised);
 
-    if (null != serialised) {
-        try {
-            favourites = JSON.parse(serialised);
-        } catch (err) {}
+        return { [key]: value };
+    }).
+    reduce((a, v) => ({ ...a, ...v }), {});
+};
+
+let setPersistedState = (key, state) => {
+    if (state.hasOwnProperty(key) && null != state[key]) {
+        localStorage.setItem(key, JSON.stringify(state[key]));
     }
-
-    return favourites;
-}
+};
 
 export function start() {
-    let favourites = getPersistedFavourites();
+    const persistKeys = ["favourites", "main", "daylist"];
+    let { daylist, main, favourites } = getPersistedState(persistKeys);
 
     // Wrapped update so state updates re-render the app
     let wrappedUpdate = (...update) => {
@@ -134,13 +139,16 @@ export function start() {
     };
 
     onUpdate(renderApp);
-    onUpdate("favourites", () => setPersistedFavourites(getState().favourites));
+
+    persistKeys.forEach(key => onUpdate(key, () => setPersistedState(key, getState())));
+
+    onUpdate("time", () => {
+        updateUpcomingSessions(getState());
+        updateCurrentSessions(getState());
+    });
 
     let tick = () => {
         updateTimer(getState());
-        updateUpcomingSessions(getState());
-        updateCurrentSessions(getState());
-
         setTimeout(tick, 1000);
     };
 
@@ -151,7 +159,7 @@ export function start() {
         false);
 
     // initial state
-    updateState(".", { ...initialState, ...normaliseSessionData(data), favourites });
+    updateState(".", { ...initialState, ...normaliseSessionData(data), favourites, daylist, main });
 
     // Start ticking
     tick();

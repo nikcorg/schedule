@@ -16,6 +16,8 @@
 
     --main-bg: #eee;
     --main-fg: #333;
+    --main-inverse-bg: #333;
+    --main-inverse-fg: #eee;
 
     --favourite-bg: #fac905;
     --favourite-fg: #333;
